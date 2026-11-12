@@ -1,0 +1,43 @@
+{
+  "version": 6,
+  "configurePresets": [
+    {
+      "name": "msvc",
+      "generator": "Ninja",
+      "binaryDir": "${sourceDir}/build/msvc",
+      "cacheVariables": {
+        "CMAKE_BUILD_TYPE": "Release",
+        "CMAKE_C_COMPILER": "cl",
+        "CMAKE_CXX_COMPILER": "cl",
+        "SYMEDA_FLAVOR": "msvc"
+      }
+    },
+    {
+      "name": "clang",
+      "generator": "Ninja",
+      "binaryDir": "${sourceDir}/build/clang",
+      "cacheVariables": {
+        "CMAKE_BUILD_TYPE": "Release",
+        "CMAKE_C_COMPILER": "clang-cl",
+        "CMAKE_CXX_COMPILER": "clang-cl",
+        "SYMEDA_FLAVOR": "clang"
+      }
+    },
+    {
+      "name": "mingw",
+      "generator": "Ninja",
+      "binaryDir": "${sourceDir}/build/mingw",
+      "cacheVariables": {
+        "CMAKE_BUILD_TYPE": "Release",
+        "CMAKE_C_COMPILER": "gcc",
+        "CMAKE_CXX_COMPILER": "g++",
+        "SYMEDA_FLAVOR": "mingw"
+      }
+    }
+  ],
+  "buildPresets": [
+    { "name": "msvc",  "configurePreset": "msvc"  },
+    { "name": "clang", "configurePreset": "clang" },
+    { "name": "mingw", "configurePreset": "mingw" }
+  ]
+}

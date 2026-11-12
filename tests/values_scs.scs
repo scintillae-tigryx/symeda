@@ -1,0 +1,16 @@
+// SPDX-License-Identifier: GPL-3.0-only
+// Copyright (C) 2026 Scintillae Ltd. - symeda.com
+// Suffix case-sensitivity in the scs dialect: M is mega, m is milli.
+// Both dividers sit at 0.5V; at the 1M tap gmin (1e-12 to ground on
+// every node) pulls it off by ~2.5e-7, which is why check.bat allows
+// a wider tolerance there.
+simulator lang=spectre
+global 0
+
+V1 (in 0) vsource dc=1
+R1 (in a) resistor r=1M
+R2 (a 0) resistor r=1000k
+R3 (in b) resistor r=1m
+R4 (b 0) resistor r=0.001
+
+tran tran stop=1u step=1n

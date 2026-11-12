@@ -1,0 +1,14 @@
+// SPDX-License-Identifier: GPL-3.0-only
+// Copyright (C) 2026 Scintillae Ltd. - symeda.com
+// .scs-dialect sine source + PWL, RC loads
+simulator lang=spectre
+global 0
+
+Vsin (sin 0) vsource type=sine sinedc=0 ampl=1 freq=1meg damp=1e8
+Vpwl (pwl 0) vsource type=pwl wave=[0 0 0.5u 1 1.5u 0.2 2u 0.2]
+R1 (sin so) resistor r=1k
+C1 (so 0) capacitor c=1n
+R2 (pwl po) resistor r=1k
+C2 (po 0) capacitor c=1n
+
+tran tran stop=4u step=10n

@@ -1,0 +1,10 @@
+// SPDX-License-Identifier: GPL-3.0-only
+// Copyright (C) 2026 Scintillae Ltd. - symeda.com
+// Element statement with no master keyword after the node list:
+// the scs front end must report it, not guess.
+simulator lang=spectre
+global 0
+
+R1 (a 0)
+
+tran tran stop=1u step=1n

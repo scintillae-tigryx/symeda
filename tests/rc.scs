@@ -1,0 +1,11 @@
+// SPDX-License-Identifier: GPL-3.0-only
+// Copyright (C) 2026 Scintillae Ltd. - symeda.com
+// RC transient test in .scs syntax - should match rc_tran.sp
+simulator lang=spectre
+global 0
+
+V1 (in 0) vsource type=pulse val0=0 val1=1 rise=1n fall=1n width=0.5u period=1u
+R1 (in out) resistor r=1k
+C1 (out 0) capacitor c=1n
+
+tran tran stop=5u step=10n

@@ -1,0 +1,20 @@
+# SPDX-License-Identifier: GPL-3.0-only
+# Copyright (C) 2026 Scintillae Ltd.
+# Find out more at symeda.com
+# Licensed under the GNU GPL version 3 only - see LICENSE for the text.
+# SYMEDA house style - run: clang-format -i src/**/*.cpp src/**/*.h
+BasedOnStyle: LLVM
+IndentWidth: 4
+ColumnLimit: 100
+PointerAlignment: Left
+ReferenceAlignment: Left
+AlignTrailingComments: true
+AllowShortFunctionsOnASingleLine: Inline
+AllowShortIfStatementsOnASingleLine: Never
+AllowShortBlocksOnASingleLine: Never
+InsertBraces: true
+AllowShortLoopsOnASingleLine: false
+BreakBeforeBraces: Attach
+NamespaceIndentation: None
+SortIncludes: Never
+SpaceBeforeParens: ControlStatements
