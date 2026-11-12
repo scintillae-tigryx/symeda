@@ -44,10 +44,15 @@ if(CMAKE_CXX_COMPILER_ID STREQUAL "MSVC")
     target_compile_options(symeda PRIVATE
         /W4 /EHsc /O2 /Ob3 /fp:precise /fp:contract /arch:AVX2 /GL /DNDEBUG)
     target_link_options(symeda PRIVATE /LTCG)
-elseif(CMAKE_CXX_COMPILER_ID STREQUAL "Clang") # clang-cl against MSVC headers
+elseif(CMAKE_CXX_COMPILER_ID STREQUAL "Clang" AND MSVC) # clang-cl against MSVC headers (needs LLVM >= 19 for the VS 18 STL)
     target_compile_options(symeda PRIVATE
         /EHsc /W3 -O3 -march=native -ffp-contract=fast -fno-math-errno -DNDEBUG)
     target_link_options(symeda PRIVATE /LTCG)
+elseif(CMAKE_CXX_COMPILER_ID STREQUAL "Clang") # clang++ GNU driver against the MSYS2 sysroot (LLVM >= 18)
+    target_compile_options(symeda PRIVATE
+        -O3 -march=native -ffp-contract=fast -fno-math-errno
+        -flto -Wall -Wextra -DNDEBUG)
+    target_link_options(symeda PRIVATE -flto -static -fuse-ld=lld -lpthread)
 elseif(CMAKE_CXX_COMPILER_ID STREQUAL "GNU")
     target_compile_options(symeda PRIVATE
         -O3 -march=native -ffp-contract=fast -fno-math-errno

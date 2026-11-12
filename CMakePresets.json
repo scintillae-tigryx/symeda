@@ -18,8 +18,12 @@
       "binaryDir": "${sourceDir}/build/clang",
       "cacheVariables": {
         "CMAKE_BUILD_TYPE": "Release",
-        "CMAKE_C_COMPILER": "clang-cl",
-        "CMAKE_CXX_COMPILER": "clang-cl",
+        "CMAKE_C_COMPILER": "clang",
+        "CMAKE_CXX_COMPILER": "clang++",
+        "CMAKE_C_COMPILER_TARGET": "x86_64-w64-windows-gnu",
+        "CMAKE_CXX_COMPILER_TARGET": "x86_64-w64-windows-gnu",
+        "CMAKE_SYSROOT": "$env{SYMEDA_MSYS2}",
+        "CMAKE_EXE_LINKER_FLAGS": "-fuse-ld=lld",
         "SYMEDA_FLAVOR": "clang"
       }
     },
